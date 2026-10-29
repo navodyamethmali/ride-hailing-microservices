@@ -51,7 +51,7 @@ public class LocationService {
      *  This method is called by the matching service when a ride is requested.
      *  Maps to redis command: GEORADIUS
      */
-    public List<NearByDriverResponse> getNearByDrivers(
+    public List<NearByDriverResponse> findNearByDrivers(
             double latitude, double longitude, double radiusInKm){
         log.info("Finding drivers within {} KM of {} , {}", radiusInKm, latitude, longitude);
 
