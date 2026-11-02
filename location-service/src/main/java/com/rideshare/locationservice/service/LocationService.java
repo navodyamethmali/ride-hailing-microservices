@@ -20,7 +20,7 @@ public class LocationService {
 
     private final RedisTemplate<String, String> redisTemplate;
     //redis key for all driver locations
-    private static final String DRIVER_GEO_KEY = "driverS:lcations";
+    private static final String DRIVER_GEO_KEY = "drivers:locations";
 
     //update driver location in redis
     // every 3 seconds,
@@ -32,8 +32,8 @@ public class LocationService {
         // Implementation for updating driver location in Redis
         //important: latitude first, longitude second - geo Spatial Standed
         Point driverPoint = new Point(
-                driverLocationRequest.getLatitude(),
-                driverLocationRequest.getLongitude()
+                driverLocationRequest.getLongitude(),
+                driverLocationRequest.getLatitude()
         );
 
         //opsForGeo methods provide access to all geo commands
@@ -52,11 +52,11 @@ public class LocationService {
      *  Maps to redis command: GEORADIUS
      */
     public List<NearByDriverResponse> findNearByDrivers(
-            double latitude, double longitude, double radiusInKm){
+            double longitude,double latitude,  double radiusInKm){
         log.info("Finding drivers within {} KM of {} , {}", radiusInKm, latitude, longitude);
 
         Circle  searchArea = new Circle(
-                new Point(latitude, longitude),
+                new Point(longitude,latitude),
                 new Distance(radiusInKm , Metrics.KILOMETERS)
         );
         GeoResults<RedisGeoCommands.GeoLocation<String>> results =

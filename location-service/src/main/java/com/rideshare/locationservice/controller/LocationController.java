@@ -30,11 +30,11 @@ public class LocationController {
     //maching service calls this when a ride is requested
     @GetMapping(value = "/drivers/nearby")
     public ResponseEntity<List<NearByDriverResponse>> getNearByDrivers(
-            @RequestParam double latitude,
             @RequestParam double longitude,
+            @RequestParam double latitude,
             @RequestParam (defaultValue = "5.0") double radius) {
 
-        return ResponseEntity.ok(locationService.findNearByDrivers(latitude, longitude, radius));
+        return ResponseEntity.ok(locationService.findNearByDrivers(longitude, latitude, radius));
         
     }
         
