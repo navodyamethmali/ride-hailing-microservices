@@ -204,6 +204,3 @@ An API gateway may be included as a separate service or configured externally as
 ## Project Status
 
 This project is being developed incrementally. Features, API endpoints, event flows, and deployment configuration should be verified against the current implementation.
-
-Add a license if you intend to distribute this project under an open-source license.
-
