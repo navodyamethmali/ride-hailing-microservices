@@ -23,7 +23,7 @@ public class LocationController {
             @RequestBody DriverLocationRequest driverLocationRequest) {
         log.info("Received driver location update: {}", driverLocationRequest);
         locationService.updateDriverLocation(driverLocationRequest);
-        return ResponseEntity.ok("Location updated successfully");
+        return ResponseEntity.ok("Driver location updated successfully");
 
     }
 
