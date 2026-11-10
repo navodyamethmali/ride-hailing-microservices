@@ -22,7 +22,7 @@ public class RideService {
     private final RideRepository rideRepository;
     private final KafkaTemplate<String, RideRequestEvent> kafkaTemplate;
 
-    private static final String RIDE_REQUEST_TOPIC = "ride.requests";
+    private static final String RIDE_REQUEST_TOPIC = "ride.requested";
 
     /*
     * create a ride in DB with REQUESTED status
