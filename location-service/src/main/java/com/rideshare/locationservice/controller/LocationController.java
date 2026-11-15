@@ -1,0 +1,50 @@
+package com.rideshare.locationservice.controller;
+
+import com.rideshare.locationservice.dto.DriverLocationRequest;
+import com.rideshare.locationservice.dto.NearByDriverResponse;
+import com.rideshare.locationservice.service.LocationService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/locations")
+@Slf4j
+@RequiredArgsConstructor
+public class LocationController { 
+    private final LocationService locationService ;
+
+    //driver phone calls this every 3 second
+    @PostMapping(value = "/driver/update")
+    public ResponseEntity<String> updateDriverLocation(
+            @RequestBody DriverLocationRequest driverLocationRequest) {
+        log.info("Received driver location update: {}", driverLocationRequest);
+        locationService.updateDriverLocation(driverLocationRequest);
+        return ResponseEntity.ok("Location updated successfully");
+
+    }
+
+    //maching service calls this when a ride is requested
+    @GetMapping(value = "/drivers/nearby")
+    public ResponseEntity<List<NearByDriverResponse>> getNearByDrivers(
+            @RequestParam double longitude,
+            @RequestParam double latitude,
+            @RequestParam (defaultValue = "5.0") double radius) {
+
+        return ResponseEntity.ok(locationService.findNearByDrivers(longitude, latitude, radius));
+        
+    }
+        
+
+    // when driver goes offline
+    @DeleteMapping(value = "/driver/{driverId}")
+    public ResponseEntity<String> removeDriver(@PathVariable String driverId) {
+        locationService.removeDriver(driverId);
+        return ResponseEntity.ok("Driver is offline");
+    
+    }
+    
+}
