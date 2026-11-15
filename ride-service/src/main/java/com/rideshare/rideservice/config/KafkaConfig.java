@@ -12,7 +12,7 @@ public class KafkaConfig {
 
     @Bean
     public NewTopic rideRequestedTopic() {
-        return TopicBuilder.name("ride-requested")
+        return TopicBuilder.name("ride.requested")
                 .partitions(3)
                 .replicas(1)
                 .build();
@@ -23,7 +23,7 @@ public class KafkaConfig {
 
     @Bean
     public NewTopic rideMatchedTopic() {
-        return TopicBuilder.name("ride-matched")
+        return TopicBuilder.name("ride.matched")
                 .partitions(3)
                 .replicas(1)
                 .build();

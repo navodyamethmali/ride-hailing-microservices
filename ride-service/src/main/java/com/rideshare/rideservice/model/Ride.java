@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Ride {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -26,7 +25,7 @@ public class Ride {
     private String riderId;
 
     //who accepted the ride
-    @Column(nullable = false)
+    @Column
     private String driverId;
 
     @Column(nullable = false)
