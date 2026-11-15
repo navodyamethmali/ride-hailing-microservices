@@ -16,7 +16,7 @@ spring:
       properties:
         spring.json.use.type.headers: false
         spring.json.value.default.type: com.rideshare.matchingservice.event.RideRequestedEvent
-        spring.json.trusted.packages: com.rideshare.matchingservice.event
+        spring.json.trusted.packages: "*"
 
 #kafka producer
     producer:
