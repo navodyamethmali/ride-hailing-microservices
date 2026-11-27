@@ -1,4 +1,4 @@
-# Ride-Hailing Microservices (`Uber-app`)
+# Ride-Hailing Microservices 
 
 An event-driven ride-hailing backend built with **Spring Boot**, **Redis Geospatial**, **Apache Kafka**, **MySQL**, and **Spring Cloud OpenFeign**.
 
@@ -147,7 +147,7 @@ docker compose ps
 
 Default exposed ports from `docker-compose.yml`:
 - **Redis:** `localhost:6379`
-- **MySQL:** `localhost:3306` (`root` / `1234`)
+- **MySQL:** `localhost:3306` (`USERNAME` / `PASSWORD`)
 - **Zookeeper:** `localhost:2181`
 - **Kafka:** `localhost:9092` (external host listener; `kafka:29092` inside the Docker network)
 
